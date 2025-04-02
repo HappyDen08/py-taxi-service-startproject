@@ -6,8 +6,8 @@ from taxi_service import settings
 class Driver(AbstractUser):
     license_number = models.CharField(max_length=63, unique=True)
     class Meta:
-        verbose_name = "Driver"
-        verbose_name_plural = "Drivers"
+        verbose_name = "driver"
+        verbose_name_plural = "drivers"
 
 
 class Manufacturer(models.Model):
@@ -19,8 +19,8 @@ class Manufacturer(models.Model):
 
 class Car(models.Model):
     model = models.CharField(max_length=63)
-    manufacturer = models.ForeignKey(Manufacturer,on_delete=models.CASCADE, unique=True)
-    drivers = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name="Cars")
+    manufacturer = models.ForeignKey(Manufacturer,on_delete=models.CASCADE)
+    drivers = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name="cars")
 
     def __str__(self) -> str:
         return str(self.model)
