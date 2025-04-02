@@ -4,7 +4,7 @@ from taxi_service import settings
 
 
 class Driver(AbstractUser):
-    license_number = models.CharField(max_length=63, unique=True)
+    license_number = models.CharField(max_length=63)
     class Meta:
         verbose_name = "driver"
         verbose_name_plural = "drivers"
